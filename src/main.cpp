@@ -1,3 +1,4 @@
+#include <Arduino.h>
 #include <RotaryEncoder.h>
 #include <Preferences.h>
 #include <PubSubClient.h>
@@ -32,7 +33,7 @@ int MQTT_CONNECTION_STATUS;
  *
  */
 void setup(){
-
+    // ----> BOOT <---- //
     //Initializing Serial Port
     Serial.begin(115200); Serial.println();
     //End of Initializing Serial Port
@@ -42,10 +43,12 @@ void setup(){
 
     //In case of first boot, the device will enter in Configuration Mode
     bool first_boot = flash.getBool("first_boot", true);
+    // ----> END_BOOT <---- //
+
     if (!first_boot) {
 
     } else {
-        //----> CONFIGURATION MODE <----//
+        // ----> ACTIVATE CONFIGURATION WEBSERVER <---- //
         ESP_LOGD("Main", "This device is not configured yet");
         WIFI_CONNECTION_STATUS = NOT_READY;
 
@@ -57,6 +60,41 @@ void setup(){
 
         flash.end();
         //End of Load configurations
+
+        //Ativando Web Server
+        IPAddress IP = activate_internal_wifi();
+        startup_server();
+
+        // ----> END_ACTIVATE CONFIGURATION WEBSERVER <---- //
+        //Ativando Bluetooth
+        //TODO Bluetooth
+
+        //Loop de Configuração
+        while(true){
+            if(WIFI_CONNECTION_STATUS == READY_TO_CONNECT){
+                try{
+                    wifi_connect();
+                    flash.end();
+                    server.end();
+                }catch(...){
+                    ESP_LOGD("WiFi Connection Error");
+                }
+            }
+            if((WIFI_CONNECTION_STATUS == CONNECTED) && (MQTT_CONNECTION_STATUS == READY_TO_CONNECT)){
+                try{
+                    mqtt_connect();
+                    flash.putBool("first_boot", false);
+                    mqttClient.disconnect();
+                    flash.end();
+                    server.end();
+                    ESP.restart();
+                }catch(...){
+                    ESP_LOGD("MQTT Connection Error");
+                }
+            }
+            dnsServer.processNextRequest();
+            //mqttClient.loop();
+        }
     }
 }
 
