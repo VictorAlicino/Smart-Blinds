@@ -31,6 +31,15 @@
 *.out
 *.app
 
+# Arduino Residues
 ArduinoOutput/
 
+# VS Code Config
 .vscode/
+
+# CLion Config
+cmake-build-debug/
+.idea/
+
+# PlataformIO Config
+.pio/
