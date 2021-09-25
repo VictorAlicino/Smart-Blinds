@@ -2,7 +2,7 @@
 #include <PubSubClient.h>
 #include <RotaryEncoder.h>
 #include <Preferences.h>
-#include "Hardware.h"
+#include "../include/Hardware.h"
 #include "esp_system.h"
 
 int blind_0_actual_position;                /// Blind 0 actual position ///

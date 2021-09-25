@@ -1,0 +1,15 @@
+C:\Users\victo\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\212.5284.51\bin\cmake\win\bin\cmake.exe -DCMAKE_BUILD_TYPE=esp32doit-devkit-v1 -DCMAKE_DEPENDS_USE_COMPILER=FALSE -G "CodeBlocks - MinGW Makefiles" C:\Users\victo\CLionProjects\Smart-Blinds
+-- The C compiler identification is GNU 6.3.0
+-- The CXX compiler identification is GNU 6.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - failed
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - failed
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done
+-- Generating done
+-- Build files have been written to: C:/Users/victo/CLionProjects/Smart-Blinds/cmake-build-esp32doit-devkit-v1
+Cannot resolve compiler path 'C:\Users\victo/.platformio/packages/toolchain-xtensa32/bin/xtensa-esp32-elf-g++.exe'

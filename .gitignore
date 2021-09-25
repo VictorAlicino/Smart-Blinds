@@ -39,7 +39,3 @@ ArduinoOutput/
 
 # CLion Config
 cmake-build-debug/
-.idea/
-
-# PlataformIO Config
-.pio/
