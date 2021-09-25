@@ -8,7 +8,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "C:/Users/victo/CLionProjects/Smart-Blinds/src/main.cpp" "C:/Users/victo/CLionProjects/Smart-Blinds/cmake-build-esp32doit-devkit-v1/CMakeFiles/Z_DUMMY_TARGET.dir/src/main.cpp.obj"
+  "C:/Users/victo/Documents/Bolsa/Persianas/lib/Hardware.cpp" "C:/Users/victo/Documents/Bolsa/Persianas/cmake-build-esp32doit-devkit-v1/CMakeFiles/Z_DUMMY_TARGET.dir/lib/Hardware.cpp.obj"
+  "C:/Users/victo/Documents/Bolsa/Persianas/src/main.cpp" "C:/Users/victo/Documents/Bolsa/Persianas/cmake-build-esp32doit-devkit-v1/CMakeFiles/Z_DUMMY_TARGET.dir/src/main.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

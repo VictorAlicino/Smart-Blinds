@@ -52,10 +52,10 @@ RM = C:\Users\victo\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\212.5284.51\
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\victo\CLionProjects\Smart-Blinds
+CMAKE_SOURCE_DIR = C:\Users\victo\Documents\Bolsa\Persianas
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\victo\CLionProjects\Smart-Blinds\cmake-build-esp32doit-devkit-v1
+CMAKE_BINARY_DIR = C:\Users\victo\Documents\Bolsa\Persianas\cmake-build-esp32doit-devkit-v1
 
 # Utility rule file for Debug.
 
@@ -66,7 +66,7 @@ include CMakeFiles/Debug.dir/compiler_depend.make
 include CMakeFiles/Debug.dir/progress.make
 
 CMakeFiles/Debug:
-	cd /d C:\Users\victo\CLionProjects\Smart-Blinds && platformio -c clion run --target debug -eesp32doit-devkit-v1
+	cd /d C:\Users\victo\Documents\Bolsa\Persianas && platformio -c clion run --target debug -eesp32doit-devkit-v1
 
 Debug: CMakeFiles/Debug
 Debug: CMakeFiles/Debug.dir/build.make
@@ -81,6 +81,6 @@ CMakeFiles/Debug.dir/clean:
 .PHONY : CMakeFiles/Debug.dir/clean
 
 CMakeFiles/Debug.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\victo\CLionProjects\Smart-Blinds C:\Users\victo\CLionProjects\Smart-Blinds C:\Users\victo\CLionProjects\Smart-Blinds\cmake-build-esp32doit-devkit-v1 C:\Users\victo\CLionProjects\Smart-Blinds\cmake-build-esp32doit-devkit-v1 C:\Users\victo\CLionProjects\Smart-Blinds\cmake-build-esp32doit-devkit-v1\CMakeFiles\Debug.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\victo\Documents\Bolsa\Persianas C:\Users\victo\Documents\Bolsa\Persianas C:\Users\victo\Documents\Bolsa\Persianas\cmake-build-esp32doit-devkit-v1 C:\Users\victo\Documents\Bolsa\Persianas\cmake-build-esp32doit-devkit-v1 C:\Users\victo\Documents\Bolsa\Persianas\cmake-build-esp32doit-devkit-v1\CMakeFiles\Debug.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Debug.dir/depend
 

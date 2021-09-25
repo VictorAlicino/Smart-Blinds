@@ -56,10 +56,10 @@ RM = C:\Users\victo\AppData\Local\JetBrains\Toolbox\apps\CLion\ch-0\212.5284.51\
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\victo\CLionProjects\Smart-Blinds
+CMAKE_SOURCE_DIR = C:\Users\victo\Documents\Bolsa\Persianas
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\victo\CLionProjects\Smart-Blinds\cmake-build-esp32doit-devkit-v1
+CMAKE_BINARY_DIR = C:\Users\victo\Documents\Bolsa\Persianas\cmake-build-esp32doit-devkit-v1
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\victo\CLionProjects\Smart-Blinds\cmake-build-esp32doit-devkit-v1\CMakeFiles C:\Users\victo\CLionProjects\Smart-Blinds\cmake-build-esp32doit-devkit-v1\\CMakeFiles\progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\victo\Documents\Bolsa\Persianas\cmake-build-esp32doit-devkit-v1\CMakeFiles C:\Users\victo\Documents\Bolsa\Persianas\cmake-build-esp32doit-devkit-v1\\CMakeFiles\progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\victo\CLionProjects\Smart-Blinds\cmake-build-esp32doit-devkit-v1\CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:\Users\victo\Documents\Bolsa\Persianas\cmake-build-esp32doit-devkit-v1\CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -154,6 +154,30 @@ Z_DUMMY_TARGET/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Z_DUMMY_TARGET.dir\build.make CMakeFiles/Z_DUMMY_TARGET.dir/build
 .PHONY : Z_DUMMY_TARGET/fast
 
+lib/Hardware.obj: lib/Hardware.cpp.obj
+.PHONY : lib/Hardware.obj
+
+# target to build an object file
+lib/Hardware.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Z_DUMMY_TARGET.dir\build.make CMakeFiles/Z_DUMMY_TARGET.dir/lib/Hardware.cpp.obj
+.PHONY : lib/Hardware.cpp.obj
+
+lib/Hardware.i: lib/Hardware.cpp.i
+.PHONY : lib/Hardware.i
+
+# target to preprocess a source file
+lib/Hardware.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Z_DUMMY_TARGET.dir\build.make CMakeFiles/Z_DUMMY_TARGET.dir/lib/Hardware.cpp.i
+.PHONY : lib/Hardware.cpp.i
+
+lib/Hardware.s: lib/Hardware.cpp.s
+.PHONY : lib/Hardware.s
+
+# target to generate assembly for a file
+lib/Hardware.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Z_DUMMY_TARGET.dir\build.make CMakeFiles/Z_DUMMY_TARGET.dir/lib/Hardware.cpp.s
+.PHONY : lib/Hardware.cpp.s
+
 src/main.obj: src/main.cpp.obj
 .PHONY : src/main.obj
 
@@ -189,6 +213,9 @@ help:
 	@echo ... Debug
 	@echo ... Production
 	@echo ... Z_DUMMY_TARGET
+	@echo ... lib/Hardware.obj
+	@echo ... lib/Hardware.i
+	@echo ... lib/Hardware.s
 	@echo ... src/main.obj
 	@echo ... src/main.i
 	@echo ... src/main.s

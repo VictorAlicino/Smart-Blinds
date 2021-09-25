@@ -1,5 +1,5 @@
-C:/Users/victo/CLionProjects/Smart-Blinds/cmake-build-esp32doit-devkit-v1/CMakeFiles/Production.dir
-C:/Users/victo/CLionProjects/Smart-Blinds/cmake-build-esp32doit-devkit-v1/CMakeFiles/edit_cache.dir
-C:/Users/victo/CLionProjects/Smart-Blinds/cmake-build-esp32doit-devkit-v1/CMakeFiles/Debug.dir
-C:/Users/victo/CLionProjects/Smart-Blinds/cmake-build-esp32doit-devkit-v1/CMakeFiles/Z_DUMMY_TARGET.dir
-C:/Users/victo/CLionProjects/Smart-Blinds/cmake-build-esp32doit-devkit-v1/CMakeFiles/rebuild_cache.dir
+C:/Users/victo/Documents/Bolsa/Persianas/cmake-build-esp32doit-devkit-v1/CMakeFiles/Production.dir
+C:/Users/victo/Documents/Bolsa/Persianas/cmake-build-esp32doit-devkit-v1/CMakeFiles/edit_cache.dir
+C:/Users/victo/Documents/Bolsa/Persianas/cmake-build-esp32doit-devkit-v1/CMakeFiles/Debug.dir
+C:/Users/victo/Documents/Bolsa/Persianas/cmake-build-esp32doit-devkit-v1/CMakeFiles/Z_DUMMY_TARGET.dir
+C:/Users/victo/Documents/Bolsa/Persianas/cmake-build-esp32doit-devkit-v1/CMakeFiles/rebuild_cache.dir

@@ -34,8 +34,8 @@
 # Arduino Residues
 ArduinoOutput/
 
-# VS Code Config
+# Configs files
 .vscode/
-
-# CLion Config
+.pio/
 cmake-build-debug/
+cmake-build-esp32doit-devkit-v1/
