@@ -40,7 +40,7 @@ String get_device_name(){
 	esp_read_mac(baseMac, ESP_MAC_WIFI_STA);
 	char baseMacChr[18] = {0};
 	sprintf(baseMacChr, "%02X%02X", baseMac[0], baseMac[5]);
-	return String(baseMacChr);
+	return {baseMacChr};
 }
 
 void blind_check_position(){
@@ -273,10 +273,10 @@ void activate_hardware(){
 	blind_0_requested_position = flash.getInt("0_last_position", 0);
 	flash.end();
 
-	//Nota -> Transformar esse trecho de código em Função Paralela (Thread)
+    //TODO Transformar esse trecho de código em Função Paralela (Thread)
 	const TickType_t xDelay = 1 / portTICK_PERIOD_MS;
 
-	//Reseting Blinds 0 Position to 0
+	//Resetting Blinds 0 Position to 0
 	blinds_up(0);
 
 	while(digitalRead(REED_SWITCH_0 != DEACTIVATED)){
@@ -285,7 +285,7 @@ void activate_hardware(){
 	blinds_stop(0);
 	blind_0_actual_position = 0;
 	ESP_LOGD("Hardware", "Motor 1 0 Position Set by Reedswitch");
-	//End of Reseting Blinds 0 Position to 0
+	//End of Resetting Blinds 0 Position to 0
 
 	#if NUMBER_OF_BLINDS_SUPPORTED >= 2
 		

@@ -17,6 +17,14 @@ enum CONNECTION_STATUS{
     CONNECTED
 };
 
+enum DEVICE_STATUS{
+    IN_PROGRESS,
+    READY,
+    DONE,
+    FAILURE,
+    CRITICAL_FAILURE
+};
+
 enum MESSAGES_IDENTIFIERS{
     SERVER_RECEIVED         = 0x00,
     DEVICE_SEND             = 0X01,
