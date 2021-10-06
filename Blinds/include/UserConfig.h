@@ -11,7 +11,7 @@
  * or change to false in order to set the Wi-Fi Credentials in compilation time, be advised that error caused by
  * connection errors will not be treated in the SELF_WIFI false Mode. Be careful.
  */
-#define SELF_WIFI           false
+#define SELF_WIFI           true
 #define WIFI_SSID           "LabIoT"
 #define WIFI_PASSWORD       "labiot2020."
 
@@ -89,5 +89,10 @@
     #define REED_SWITCH_3           (void *) 0  /** Reedswitch 3 Pin */
 #endif
 // -------------- end of Blinds Configurations  -------------- //
+
+//TODO REMOVE BEFORE PRODUCTION
+#if NUMBER_OF_BLINDS_SUPPORTED > 1
+#error More than one blind are not currently supported
+#endif
 
 #endif //SMART_BLINDS_USERCONFIG_H

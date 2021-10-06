@@ -24,6 +24,23 @@ extern String mqtt_password;
 extern bool MQTT_LOGIN_REQUIRED;
 static const char* TAG = "Connections";
 
+struct network_connection_error: public std::exception
+{
+    const char * what () const throw ()
+    {
+        return "Network Connection Error";
+    }
+};
+
+struct mqtt_connection_error: public std::exception
+{
+    const char * what () const throw ()
+    {
+        return "MQTT Connection Error";
+    }
+};
+
+
 void wifi_connect(){
     try{
         flash.begin("config");
@@ -157,6 +174,8 @@ bool mqtt_connect(){
         ESP_LOGE(TAG, "MQTT Connection Error -> Throwing Exception.");
         throw e;
     }
+
+    return true;
 }
 
 void mqtt_callback(char* topic, byte* message, unsigned int length){

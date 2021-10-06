@@ -5,28 +5,28 @@
 #include "Hardware.h"
 #include "esp_system.h"
 
-int blind_0_actual_position;                /// Blind 0 actual position ///
-int blind_0_requested_position;             /// Blind 0 requested position ///
-int blind_0_absolute_zero;                  /// Blind 0 absolute zero position ///
-bool blind_0_moving;                        /// "Is Blind 0 moving?" flag ///
+int blind_0_actual_position;                /// Blind 0 actual position         ///
+int blind_0_requested_position;             /// Blind 0 requested position      ///
+int blind_0_absolute_zero;                  /// Blind 0 absolute zero position  ///
+bool blind_0_moving;                        /// "Is Blind 0 moving?" flag       ///
 
 #if NUMBER_OF_BLINDS_SUPPORTED >= 2
-    int blind_1_actual_position;            /// Blind 1 actual position ///
-    int blind_1_requested_position;         /// Blind 1 requested position ///
-    int blind_1_absolute_zero;              /// Blind 1 absolute zero position ///
-    bool blind_1_moving;                    /// "Is Blind 1 moving?" flag ///
+    int blind_1_actual_position;            /// Blind 1 actual position         ///
+    int blind_1_requested_position;         /// Blind 1 requested position      ///
+    int blind_1_absolute_zero;              /// Blind 1 absolute zero position  ///
+    bool blind_1_moving;                    /// "Is Blind 1 moving?" flag       ///
 #endif
 #if NUMBER_OF_BLINDS_SUPPORTED >= 3
-    int blind_2_actual_position;            /// Blind 2 actual position ///
-    int blind_2_requested_position;         /// Blind 2 requested position ///
-    int blind_2_absolute_zero;              /// Blind 2 absolute zero position ///
-    bool blind_2_moving;                    /// "Is Blind 2 moving?" flag ///
+    int blind_2_actual_position;            /// Blind 2 actual position         ///
+    int blind_2_requested_position;         /// Blind 2 requested position      ///
+    int blind_2_absolute_zero;              /// Blind 2 absolute zero position  ///
+    bool blind_2_moving;                    /// "Is Blind 2 moving?" flag       ///
 #endif
 #if NUMBER_OF_BLINDS_SUPPORTED == 4
-    int blind_3_actual_position;            /// Blind 3 actual position ///
-    int blind_3_requested_position;         /// Blind 3 requested position ///
-    int blind_3_absolute_zero;              /// Blind 3 absolute zero position ///
-    bool blind_3_moving;                    /// "Is Blind 3 moving?" flag ///
+    int blind_3_actual_position;            /// Blind 3 actual position         ///
+    int blind_3_requested_position;         /// Blind 3 requested position      ///
+    int blind_3_absolute_zero;              /// Blind 3 absolute zero position  ///
+    bool blind_3_moving;                    /// "Is Blind 3 moving?" flag       ///
 #endif
 
 extern PubSubClient mqttClient;
@@ -48,7 +48,7 @@ void blind_check_position(){
 		if(blind_0_actual_position < blind_0_requested_position) blinds_up(0);
 		if(blind_0_actual_position > blind_0_requested_position) blinds_down(0);
 	}
-	if(blind_0_moving == true){
+	if(blind_0_moving){
 		blinds_stop(0);
 	}
 }
@@ -284,7 +284,7 @@ void activate_hardware(){
 	}
 	blinds_stop(0);
 	blind_0_actual_position = 0;
-	ESP_LOGD("Hardware", "Motor 1 0 Position Set by Reedswitch");
+	ESP_LOGD("Hardware", "Motor 1 0 Position Set by Reed switch");
 	//End of Resetting Blinds 0 Position to 0
 
 	#if NUMBER_OF_BLINDS_SUPPORTED >= 2

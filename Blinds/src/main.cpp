@@ -7,6 +7,7 @@
 #include <Hardware.h>
 #include <Connections.h>
 #include <UserConfig.h>
+#include <WebServers.h>
 
 //Global Variables
 PubSubClient mqttClient(*(new WiFiClient()));
@@ -239,6 +240,9 @@ void setup(){
             ESP_LOGD("MQTT Connection Error");
         }
     }
+
+    //Starting Running Server
+    running_server();
 
     ESP_LOGD(TAG, "%s successfully initialized", name.c_str());
 }

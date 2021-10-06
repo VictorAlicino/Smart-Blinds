@@ -9,7 +9,8 @@
 //Configurações
 #define ACTIVATED HIGH 
 #define DEACTIVATED LOW
- //Fim das configurações
+//Fim das configurações
+
 
 enum CONNECTION_STATUS{
     NOT_READY,
@@ -40,7 +41,6 @@ enum MODE{
 
 /**
  * @brief Data type representation of a Blind and its components
- * 
  */
 typedef struct BLINDS_DATA{
     RotaryEncoder *encoder;
