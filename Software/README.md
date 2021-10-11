@@ -1,3 +1,4 @@
+### Firmware Progress
 ![](https://img.shields.io/badge/BLINDS-PROTOYPE%20READY-brightgreen?style=for-the-badge&logo=arduino)
 ![](https://img.shields.io/badge/LIGHTS-NOT_STARTED-inactive?style=for-the-badge&logo=arduino)
 ![](https://img.shields.io/badge/SOUND-NOT_STARTED-inactive?style=for-the-badge&logo=arduino)
