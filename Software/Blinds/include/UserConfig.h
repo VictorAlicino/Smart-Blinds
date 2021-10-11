@@ -68,7 +68,7 @@
 #error Blinds exceeds the limit of 4
 #endif
 #if NUMBER_OF_BLINDS_SUPPORTED >= 2
-#define ENCODER_1_PIN_A         (void *) 0  /** Encoder 1 First Pin */
+    #define ENCODER_1_PIN_A         (void *) 0  /** Encoder 1 First Pin */
     #define ENCODER_1_PIN_B         (void *) 0  /** Encoder 1 Second Pin */
     #define MOTOR_1_PIN_A           (void *) 0  /** Motor 1 First Pin */
     #define MOTOR_1_PIN_B           (void *) 0  /** Motor 1 Second Pin */

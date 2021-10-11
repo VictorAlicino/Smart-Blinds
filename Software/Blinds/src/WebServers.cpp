@@ -30,7 +30,7 @@ public:
     }
 
     void handleRequest(AsyncWebServerRequest *request) {
-        request->send(SPIFFS, "/Teste1.html", String(), false, _index_config_processor);
+        request->send(SPIFFS, "/Teste1.html", String(), false, index_config_processor);
     }
 };
 
