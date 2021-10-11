@@ -1,6 +1,6 @@
 # Smart Office
 
-## An open-source IoT solution for modern and cloud restricted offices
+An open-source IoT solution for modern and cloud restricted offices
 
 ### General Progress (Circuit + Firmware + Software)
 ![](https://img.shields.io/badge/BLINDS-PROTOYPE%20READY-brightgreen?style=for-the-badge&logo=arduino)
