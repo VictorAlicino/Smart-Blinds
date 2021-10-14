@@ -1,6 +1,6 @@
 ### Board Development Progress
 ![](https://img.shields.io/badge/BLINDS-NOT_STARTED-inactive?style=for-the-badge&logo=arduino)
-![](https://img.shields.io/badge/LIGHTS-DESIGNING_CIRCUIT-blue?style=for-the-badge&logo=arduino)
+![](https://img.shields.io/badge/LIGHTS-V1.0_PROTOTYPE_READY-green?style=for-the-badge&logo=arduino)
 ![](https://img.shields.io/badge/SOUND-NOT_STARTED-inactive?style=for-the-badge&logo=arduino)
 
 ---
