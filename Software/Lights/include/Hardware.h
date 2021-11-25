@@ -6,7 +6,7 @@
 
 
 //Configurações
-#define ACTIVATED HIGH 
+#define ACTIVATED HIGH
 #define DEACTIVATED LOW
 //Fim das configurações
 
@@ -36,6 +36,27 @@ enum MODE{
     BLINDS_UP           = 0X01,
     BLINDS_DOWN         = 0X02,
     BLINDS_LINEAR_VALUE = 0x03,
+};
+
+class Light{
+private:
+    bool power_state;
+    bool dimmable;
+    float dimmer_value;
+    String name;
+
+public:
+    Light(int GPIO, String name);
+
+    bool is_dimmable();
+
+    bool get_power_state();
+
+    float get_dimmer_value();
+
+    float set_dimm_value_to();
+
+    String get_name();
 };
 
 /**
