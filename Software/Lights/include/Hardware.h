@@ -46,15 +46,15 @@ private:
     String name;
 
 public:
-    Light(int GPIO, String name);
+    Light(int GPIO, String name, bool is_dimmable);
 
     bool is_dimmable();
 
     bool get_power_state();
 
-    float get_dimmer_value();
+    int get_dimmer_value();
 
-    float set_dimm_value_to();
+    unsigned int set_dimm_value_to(unsigned int value);
 
     String get_name();
 };
