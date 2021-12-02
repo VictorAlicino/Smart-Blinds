@@ -1,6 +1,8 @@
 #include <Arduino.h>
 #include <PubSubClient.h>
 #include <Preferences.h>
+
+#include <utility>
 #include "Hardware.h"
 #include "esp_system.h"
 
@@ -29,28 +31,31 @@ void activate_hardware(){
 
 }
 
-Light::Light(int GPIO, String name, bool is_dimmable){
-	digitalWrite(GPIO, DEACTIVATED);
+Light::Light(int GP_IO, String name, bool is_dimmable){
+	digitalWrite(GP_IO, DEACTIVATED);
 	this->power_state = DEACTIVATED;
 	this->dimmable = is_dimmable;
 	this->dimmer_value = 0x00;
-	this->name = name;
+	this->name = std::move(name);
 }
 
-bool Light::is_dimmable(){
-	return dimmable ? true : false;
+bool Light::is_dimmable() const{
+	return dimmable;
 }
 
-bool Light::get_power_state(){
-	return power_state ? true : false;
+bool Light::get_power_state() const{
+	return power_state;
 }
 
-int Light::get_dimmer_value(){
+unsigned int Light::get_dimmer_value() const{
 	return this->dimmer_value;
 }
 
-unsigned int Light::set_dimm_value_to(unsigned int value){
-	if value > 0 && value < 255 ? dimmer_value = value : throw dimmer_error;
+void Light::set_dimm_value_to(unsigned int value){
+    if(!(value >0 && value < 255)){
+        throw dimmer_error();
+    }
+    this->dimmer_value = value;
 }
 
 String Light::get_name(){

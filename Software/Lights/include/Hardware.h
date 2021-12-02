@@ -42,19 +42,19 @@ class Light{
 private:
     bool power_state;
     bool dimmable;
-    float dimmer_value;
+    unsigned int dimmer_value;
     String name;
 
 public:
     Light(int GPIO, String name, bool is_dimmable);
 
-    bool is_dimmable();
+    bool is_dimmable() const;
 
-    bool get_power_state();
+    bool get_power_state() const;
 
-    int get_dimmer_value();
+    unsigned int get_dimmer_value() const;
 
-    unsigned int set_dimm_value_to(unsigned int value);
+    void set_dimm_value_to(unsigned int value);
 
     String get_name();
 };
