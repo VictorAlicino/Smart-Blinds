@@ -11,6 +11,7 @@
 //Fim das configurações
 
 
+typedef unsigned int uint_8t;
 enum CONNECTION_STATUS{
     NOT_READY,
     READY_TO_CONNECT,
@@ -32,31 +33,102 @@ enum MESSAGES_IDENTIFIERS{
 };
 
 enum MODE{
-    BLINDS_STOP         = 0X00,
-    BLINDS_UP           = 0X01,
-    BLINDS_DOWN         = 0X02,
-    BLINDS_LINEAR_VALUE = 0x03,
+    LIGHTS_ON           = 0X00,
+    LIGHTS_OFF          = 0X01,
+    LIGHTS_VALUE_CHANGE = 0X02,
 };
 
+/**
+ * @brief Light controls Class
+ */
 class Light{
 private:
+    uint8_t pin;
     bool power_state;
     bool dimmable;
-    unsigned int dimmer_value;
+    uint8_t dimmer_value;
     String name;
 
 public:
-    Light(int GPIO, String name, bool is_dimmable);
+    /**
+     *
+     * @param GPIO
+     * @param name
+     * @param is_dimmable
+     */
+    Light(uint8_t GPIO, const char* name, bool is_dimmable);
 
-    bool is_dimmable() const;
+    /**
+     *
+     * @return
+     */
+    uint8_t getPin() const;
 
-    bool get_power_state() const;
+    /**
+     *
+     * @param pin
+     */
+    void setPin(uint8_t pin);
 
-    unsigned int get_dimmer_value() const;
+    /**
+     *
+     * @return
+     */
+    bool isPowerState() const;
 
-    void set_dimm_value_to(unsigned int value);
+    /**
+     *
+     * @param powerState
+     */
+    void setPowerState(bool powerState);
 
-    String get_name();
+    /**
+     *
+     * @return
+     */
+    bool isDimmable() const;
+
+    /**
+     *
+     * @param dimmable
+     */
+    void setDimmable(bool dimmable);
+
+    /**
+     *
+     * @return
+     */
+    uint8_t getDimmerValue() const;
+
+    /**
+     *
+     * @param dimmerValue
+     */
+    void setDimmerValue(uint8_t dimmerValue);
+
+    /**
+     *
+     * @return
+     */
+    const String &getName() const;
+
+    /**
+     *
+     * @param name
+     */
+    void setName(const String &name);
+
+    /**
+     *
+     */
+    void on();
+
+    /**
+     *
+     */
+    void off();
+
+    void pulse(uint8_t ms);
 };
 
 /**

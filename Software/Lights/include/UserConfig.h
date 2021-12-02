@@ -65,4 +65,8 @@
 
 // --------- end General Purpose Input/Output   ---------- //
 
+// -------------- Self Test Configurations -------------- //
+#define PULSE_MS            250
+// ------------ end Self Test Configurations ----------- //
+
 #endif //LIGHTS_USERCONFIG_H

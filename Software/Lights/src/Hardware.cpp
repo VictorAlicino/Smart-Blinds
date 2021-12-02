@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include <PubSubClient.h>
 #include <Preferences.h>
+#include <new>
 
 #include <utility>
 #include "Hardware.h"
@@ -9,6 +10,8 @@
 extern PubSubClient mqttClient;
 extern String device_name;
 extern Preferences flash;
+static const char* TAG = "Connections";
+std::vector<Light> Lights;
 
 struct dimmer_error: public std::exception
 {
@@ -26,38 +29,100 @@ String get_device_name(){
 	return {baseMacChr};
 }
 
-void activate_hardware(){
-	ESP_LOGD("Hardware", "Initializing the Hardware");
+void activate_hardware() {
+    ESP_LOGD("Hardware", "Initializing the Hardware");
 
-}
+    Lights.reserve(8);
 
-Light::Light(int GP_IO, String name, bool is_dimmable){
-	digitalWrite(GP_IO, DEACTIVATED);
-	this->power_state = DEACTIVATED;
-	this->dimmable = is_dimmable;
-	this->dimmer_value = 0x00;
-	this->name = std::move(name);
-}
+    Lights.emplace_back(GP_CONTROL_1, "Luz 1", false);
+    Lights.emplace_back(GP_CONTROL_2, "Luz 2", false);
+    Lights.emplace_back(GP_CONTROL_3, "Luz 3", false);
+    Lights.emplace_back(GP_CONTROL_4, "Luz 4", false);
+    Lights.emplace_back(GP_CONTROL_5, "Luz 5", false);
+    Lights.emplace_back(GP_CONTROL_6, "Luz 6", false);
+    Lights.emplace_back(GP_CONTROL_7, "Luz 7", false);
+    Lights.emplace_back(GP_CONTROL_8, "Luz 8", false);
 
-bool Light::is_dimmable() const{
-	return dimmable;
-}
-
-bool Light::get_power_state() const{
-	return power_state;
-}
-
-unsigned int Light::get_dimmer_value() const{
-	return this->dimmer_value;
-}
-
-void Light::set_dimm_value_to(unsigned int value){
-    if(!(value >0 && value < 255)){
-        throw dimmer_error();
+    for(auto& it:Lights){
+        it.pulse(PULSE_MS);
+        ESP_LOGD(TAG, "%s Pulse", it.getName().c_str());
     }
-    this->dimmer_value = value;
 }
 
-String Light::get_name(){
-	return this->name;
+Light::Light(uint8_t GPIO, const char *name, bool is_dimmable) {
+    this->pin = GPIO;
+    pinMode(this->pin, OUTPUT);
+    this->dimmable = is_dimmable;
+    digitalWrite(this->pin, DEACTIVATED);
+    this->name = String(name);
+    this->dimmer_value = 0x00;
+    this->power_state = DEACTIVATED;
+    ESP_LOGD(TAG, "Light Object Created");
 }
+
+uint8_t Light::getPin() const {
+    return pin;
+}
+
+void Light::setPin(uint8_t pin) {
+    Light::pin = pin;
+}
+
+bool Light::isPowerState() const {
+    return power_state;
+}
+
+void Light::setPowerState(bool powerState) {
+    power_state = powerState;
+}
+
+bool Light::isDimmable() const {
+    return dimmable;
+}
+
+void Light::setDimmable(bool dimmable) {
+    Light::dimmable = dimmable;
+}
+
+uint8_t Light::getDimmerValue() const {
+    return dimmer_value;
+}
+
+void Light::setDimmerValue(uint8_t dimmerValue) {
+    dimmer_value = dimmerValue;
+}
+
+const String &Light::getName() const {
+    return name;
+}
+
+void Light::setName(const String &name) {
+    Light::name = name;
+}
+
+void Light::on(){
+    if(this->dimmable){
+
+    }else{
+        digitalWrite(this->pin, ACTIVATED);
+    }
+    this->power_state = ACTIVATED;
+}
+
+void Light::off(){
+    if(this->dimmable){
+
+    }else{
+        digitalWrite(this->pin, ACTIVATED);
+    }
+    this->power_state = DEACTIVATED;
+}
+
+void Light::pulse(uint8_t ms){
+    digitalWrite(this->pin, (this->power_state == ACTIVATED ? DEACTIVATED : ACTIVATED));
+    this->power_state = !(this->power_state);
+    vTaskDelay(ms/portTICK_PERIOD_MS);
+    digitalWrite(this->pin, !this->power_state);
+    this->power_state = !(this->power_state);
+}
+

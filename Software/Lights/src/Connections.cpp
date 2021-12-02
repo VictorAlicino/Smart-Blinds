@@ -22,6 +22,7 @@ extern int MQTT_CONNECTION_STATUS;
 extern String mqtt_user;
 extern String mqtt_password;
 extern bool MQTT_LOGIN_REQUIRED;
+extern std::vector<Light> Lights;
 static const char* TAG = "Connections";
 
 struct network_connection_error: public std::exception
@@ -114,7 +115,7 @@ bool mqtt_connect(){
             mqttClient.setServer(mqtt_server_ip.c_str(), mqtt_server_port);
 
             //Setting device name in MQTT Server
-            String name = "Persiana " + device_name;
+            String name = "Interruptor Inteligente " + device_name;
 
             //Retrieving Macro information if available
             bool temp = IS_MQTT_LOGIN_REQUIRED;
@@ -189,12 +190,43 @@ void mqtt_callback(char* topic, byte* message, unsigned int length){
         }
         buffer[length] = '\0';
 
-        if (strcmp(buffer, "") == 0) {
-        }else if (strcmp(buffer, "") == 0) {
-        }else if (strcmp(buffer, "") == 0){
+        //TODO PLEASE FIX THIS PART MADE FOR TESTS
+        if (strcmp(buffer, "0000") == 0) {
+            Lights.at(0).on();
+        }else if (strcmp(buffer, "0001") == 0) {
+            Lights.at(1).on();
+        }else if (strcmp(buffer, "0002") == 0){
+            Lights.at(2).on();
+        }else if (strcmp(buffer, "0003") == 0){
+            Lights.at(3).on();
+        }else if (strcmp(buffer, "0004") == 0){
+            Lights.at(4).on();
+        }else if (strcmp(buffer, "0005") == 0){
+            Lights.at(5).on();
+        }else if (strcmp(buffer, "0006") == 0){
+            Lights.at(6).on();
+        }else if (strcmp(buffer, "0007") == 0){
+            Lights.at(7).on();
+        }else if (strcmp(buffer, "0100") == 0){
+            Lights.at(0).off();
+        }else if (strcmp(buffer, "0101") == 0){
+            Lights.at(1).off();
+        }else if (strcmp(buffer, "0102") == 0){
+            Lights.at(2).off();
+        }else if (strcmp(buffer, "0103") == 0){
+            Lights.at(3).off();
+        }else if (strcmp(buffer, "0104") == 0){
+            Lights.at(4).off();
+        }else if (strcmp(buffer, "0105") == 0){
+            Lights.at(5).off();
+        }else if (strcmp(buffer, "0106") == 0){
+            Lights.at(6).off();
+        }else if (strcmp(buffer, "0107") == 0){
+            Lights.at(7).off();
         }else{
             ESP_LOGE(TAG, "An MQTT Message was received but cannot be decoded by the system");
         }
+        // FIX THIS !!!!!!!!!!
     }
 }
 

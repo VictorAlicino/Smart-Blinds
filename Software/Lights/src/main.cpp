@@ -22,7 +22,7 @@ String mqtt_server_ip;
 int mqtt_server_port;
 String mqtt_user;
 String mqtt_password;
-bool MQTT_LOGIN_REQUIRED = false;
+bool MQTT_LOGIN_REQUIRED = IS_MQTT_LOGIN_REQUIRED;
 //end of Global Variables
 
 //Global FLAGS
@@ -250,5 +250,4 @@ void setup() {
 }
 
 void loop() {
-// write your code here
 }
