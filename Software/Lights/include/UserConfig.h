@@ -11,7 +11,7 @@
  * or change to false in order to set the Wi-Fi Credentials in compilation time, be advised that errors caused by
  * connection problems will not be treated in the SELF_WIFI false Mode. Be careful.
  */
-#define SELF_WIFI           false
+#define SELF_WIFI           true
 #define WIFI_SSID           ""
 #define WIFI_PASSWORD       ""
 
