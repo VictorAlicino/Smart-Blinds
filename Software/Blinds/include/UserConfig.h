@@ -20,7 +20,7 @@
  * a failure.
  * This Macro is an Integer. Example: WIFI_ATTEMPTS 5
  */
-#define WIFI_ATTEMPTS       5
+#define WIFI_ATTEMPTS       2
 // -------------- end of WiFi Configurations  -------------- //
 
 
@@ -41,7 +41,7 @@
 #define MQTT_SERVER_PORT        1883
 
 #define MQTT_TOPIC_to_SUB       "0001"
-#define MQTT_TOPIC_to_PUB       "qualquercoisa"
+#define MQTT_TOPIC_to_PUB       "SMARTOFFICE_COMM"
 
 /**
  * The MQTT_ATTEMPTS Macro will define how many times the device should try to connect to the broker before communicate
