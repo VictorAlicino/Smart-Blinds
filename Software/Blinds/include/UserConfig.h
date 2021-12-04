@@ -37,7 +37,7 @@
 
 #define MQTT_USER               ""
 #define MQTT_PASSWORD           ""
-#define MQTT_SERVER             "192.168.1.103"
+#define MQTT_SERVER             ""
 #define MQTT_SERVER_PORT        1883
 
 #define MQTT_TOPIC_to_SUB       "0001"
