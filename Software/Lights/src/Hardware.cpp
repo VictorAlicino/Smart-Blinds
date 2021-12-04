@@ -15,7 +15,7 @@ std::vector<Light> Lights;
 
 struct dimmer_error: public std::exception
 {
-    const char * what () const throw ()
+    const char * what () const noexcept override
     {
         return "Dimmer Value Error";
     }

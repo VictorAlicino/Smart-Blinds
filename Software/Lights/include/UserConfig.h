@@ -8,12 +8,12 @@
 // ------------------ Wi-Fi Configurations  ----------------- //
 /**
  * Change the SELF_WIFI Macro to "true" if you want the user to input the Wi-Fi Credentials via Webserver
- * or change to false in order to set the Wi-Fi Credentials in compilation time, be advised that error caused by
- * connection errors will not be treated in the SELF_WIFI false Mode. Be careful.
+ * or change to false in order to set the Wi-Fi Credentials in compilation time, be advised that errors caused by
+ * connection problems will not be treated in the SELF_WIFI false Mode. Be careful.
  */
-#define SELF_WIFI           true
-#define WIFI_SSID           "LabIoT"
-#define WIFI_PASSWORD       "labiot2020."
+#define SELF_WIFI           false
+#define WIFI_SSID           "50 centavos a hora"
+#define WIFI_PASSWORD       "duzentoseoito"
 
 /**
  * The WIFI_ATTEMPTS Macro will define how many times the device should try to connect to Wi-Fi before communicate
@@ -37,11 +37,11 @@
 
 #define MQTT_USER               ""
 #define MQTT_PASSWORD           ""
-#define MQTT_SERVER             "192.168.1.103"
+#define MQTT_SERVER             "192.168.1.37"
 #define MQTT_SERVER_PORT        1883
 
-#define MQTT_TOPIC_to_SUB       "0002"
-#define MQTT_TOPIC_to_PUB       "qualquercoisa2"
+#define MQTT_TOPIC_to_SUB       "0001"
+#define MQTT_TOPIC_to_PUB       "SMARTOFFICE_COMM"
 
 /**
  * The MQTT_ATTEMPTS Macro will define how many times the device should try to connect to the broker before communicate

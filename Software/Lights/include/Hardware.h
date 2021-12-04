@@ -6,8 +6,8 @@
 
 
 //Configurações
-#define ACTIVATED HIGH
-#define DEACTIVATED LOW
+#define ACTIVATED LOW
+#define DEACTIVATED HIGH
 //Fim das configurações
 
 

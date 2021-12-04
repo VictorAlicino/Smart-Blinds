@@ -53,17 +53,21 @@ void setup() {
         //end of Setting up name
 
 #if SELF_WIFI == false
+        ssid = WIFI_SSID;
+        pass = WIFI_PASSWORD;
+        WIFI_CONNECTION_STATUS = READY_TO_CONNECT;
+
+        mqtt_server_ip = MQTT_SERVER;
+        mqtt_server_port = MQTT_SERVER_PORT;
+        MQTT_CONNECTION_STATUS = READY_TO_CONNECT;
+
         ESP_LOGD(TAG, "The Wi-Fi Credentials are code locked!");
         ESP_LOGD(TAG, "SSID: %s", ssid.c_str());
         ESP_LOGD(TAG, "Password: %s", pass.c_str());
-        ssid = WIFI_SSID;
-        pass = WIFI_PASSWORD;
 
         ESP_LOGD(TAG, "The MQTT Credentials are code locked!");
         ESP_LOGD(TAG, "Server IP: %s", mqtt_server_ip.c_str());
         ESP_LOGD(TAG, "Server Port: %d", mqtt_server_port);
-        mqtt_server_ip = MQTT_SERVER;
-        mqtt_server_port = MQTT_SERVER_PORT;
 
         if(MQTT_LOGIN_REQUIRED){
             mqtt_user = MQTT_USER;
@@ -104,7 +108,7 @@ void setup() {
         if(counter == WIFI_ATTEMPTS){
             ESP_LOGE(TAG, "The system tried to connect to Wi-Fi %d times and %d times to MQTT and failed",
                      WIFI_ATTEMPTS, MQTT_ATTEMPTS);
-            ESP_LOGD(TAG, "The following connection(s) failed");
+            ESP_LOGD(TAG, "The following connection(s) failed:");
             if(WIFI_CONNECTION_STATUS != CONNECTED){
                 ESP_LOGD(TAG, "Wi-Fi Connection failed");
             }
@@ -116,6 +120,7 @@ void setup() {
             while(Serial.available() == 0){ /* Empty Loop */ }
             String command = Serial.readString();
             if(command == "Y"){
+                ESP_LOGD(TAG, "Restarting Now...");
                 ESP.restart();
             }
         }
@@ -231,6 +236,12 @@ void setup() {
             wifi_connect();
         } catch (...) {
             ESP_LOGD("WiFi Connection Error");
+#if SELF_WIFI == true
+                flash.begin("config");
+                flash.putBool("first_boot", true);
+                flash.end();
+                ESP.restart();
+#endif
         }
     }
 
@@ -240,6 +251,12 @@ void setup() {
             mqtt_connect();
         } catch (...) {
             ESP_LOGD("MQTT Connection Error");
+#if SELF_WIFI == true
+            flash.begin("config");
+            flash.putBool("first_boot", true);
+            flash.end();
+            ESP.restart();
+#endif
         }
     }
 

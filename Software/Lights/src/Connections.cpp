@@ -27,7 +27,7 @@ static const char* TAG = "Connections";
 
 struct network_connection_error: public std::exception
 {
-    const char * what () const throw ()
+    const char * what () const noexcept override
     {
         return "Network Connection Error";
     }
@@ -35,7 +35,7 @@ struct network_connection_error: public std::exception
 
 struct mqtt_connection_error: public std::exception
 {
-    const char * what () const throw ()
+    const char * what () const noexcept override
     {
         return "MQTT Connection Error";
     }
@@ -60,7 +60,7 @@ void wifi_connect(){
             ESP_LOGD(TAG, "Retrying...");
         }
         //If after all attempts the connection was not successfully made, an Exception is thrown
-        if(WiFi.status() != WL_CONNECTED){
+        if(WiFiClass::status() != WL_CONNECTED){
             ESP_LOGE(TAG, "Connection failed after %d attempts.", WIFI_ATTEMPTS);
             flash.end();
             throw network_connection_error();
@@ -81,6 +81,7 @@ void wifi_connect(){
         //An error has occurred during connection
         WIFI_CONNECTION_STATUS = NOT_READY;
         ESP_LOGE(TAG, "Network Connection Error -> Throwing Exception.");
+        flash.end();
         throw e;
     }
 }
@@ -115,7 +116,7 @@ bool mqtt_connect(){
             mqttClient.setServer(mqtt_server_ip.c_str(), mqtt_server_port);
 
             //Setting device name in MQTT Server
-            String name = "Interruptor Inteligente " + device_name;
+            String name = "SmartLight (" + device_name + ")";
 
             //Retrieving Macro information if available
             bool temp = IS_MQTT_LOGIN_REQUIRED;
@@ -173,6 +174,7 @@ bool mqtt_connect(){
         //Error caught during connection
         MQTT_CONNECTION_STATUS = NOT_READY;
         ESP_LOGE(TAG, "MQTT Connection Error -> Throwing Exception.");
+        flash.end();
         throw e;
     }
 
