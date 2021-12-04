@@ -12,8 +12,8 @@
  * connection problems will not be treated in the SELF_WIFI false Mode. Be careful.
  */
 #define SELF_WIFI           false
-#define WIFI_SSID           "50 centavos a hora"
-#define WIFI_PASSWORD       "duzentoseoito"
+#define WIFI_SSID           ""
+#define WIFI_PASSWORD       ""
 
 /**
  * The WIFI_ATTEMPTS Macro will define how many times the device should try to connect to Wi-Fi before communicate
@@ -37,7 +37,7 @@
 
 #define MQTT_USER               ""
 #define MQTT_PASSWORD           ""
-#define MQTT_SERVER             "192.168.1.37"
+#define MQTT_SERVER             ""
 #define MQTT_SERVER_PORT        1883
 
 #define MQTT_TOPIC_to_SUB       "0001"
