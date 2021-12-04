@@ -10,7 +10,7 @@
 extern PubSubClient mqttClient;
 extern String device_name;
 extern Preferences flash;
-static const char* TAG = "Connections";
+static const char* TAG = "Hardware";
 std::vector<Light> Lights;
 
 struct dimmer_error: public std::exception
@@ -107,15 +107,17 @@ void Light::on(){
         digitalWrite(this->pin, ACTIVATED);
     }
     this->power_state = ACTIVATED;
+    ESP_LOGD(TAG, "%s is now On", this->name.c_str());
 }
 
 void Light::off(){
     if(this->dimmable){
 
     }else{
-        digitalWrite(this->pin, ACTIVATED);
+        digitalWrite(this->pin, DEACTIVATED);
     }
     this->power_state = DEACTIVATED;
+    ESP_LOGD(TAG, "%s is now Off", this->name.c_str());
 }
 
 void Light::pulse(uint8_t ms){

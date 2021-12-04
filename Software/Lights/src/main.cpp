@@ -267,4 +267,5 @@ void setup() {
 }
 
 void loop() {
+    mqttClient.loop();
 }
