@@ -44,79 +44,22 @@ enum MODE{
 class Light{
 private:
     uint8_t pin;
+    uint8_t switch_pin;
     bool power_state;
     bool dimmable;
+    bool is_active;
     uint8_t dimmer_value;
     String name;
 
 public:
     /**
      *
-     * @param GPIO
+     * @param GPIO_Light
+     * @param GPIO_Switch
      * @param name
      * @param is_dimmable
      */
-    Light(uint8_t GPIO, const char* name, bool is_dimmable);
-
-    /**
-     *
-     * @return
-     */
-    uint8_t getPin() const;
-
-    /**
-     *
-     * @param pin
-     */
-    void setPin(uint8_t pin);
-
-    /**
-     *
-     * @return
-     */
-    bool isPowerState() const;
-
-    /**
-     *
-     * @param powerState
-     */
-    void setPowerState(bool powerState);
-
-    /**
-     *
-     * @return
-     */
-    bool isDimmable() const;
-
-    /**
-     *
-     * @param dimmable
-     */
-    void setDimmable(bool dimmable);
-
-    /**
-     *
-     * @return
-     */
-    uint8_t getDimmerValue() const;
-
-    /**
-     *
-     * @param dimmerValue
-     */
-    void setDimmerValue(uint8_t dimmerValue);
-
-    /**
-     *
-     * @return
-     */
-    const String &getName() const;
-
-    /**
-     *
-     * @param name
-     */
-    void setName(const String &name);
+    Light(uint8_t GPIO_Light, uint8_t GPIO_Switch, const char* name, bool is_dimmable);
 
     /**
      *
@@ -128,7 +71,14 @@ public:
      */
     void off();
 
+    /**
+     *
+     * @param ms
+     */
     void pulse(uint8_t ms);
+
+    String getName();
+
 };
 
 /**

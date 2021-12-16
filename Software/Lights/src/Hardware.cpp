@@ -34,14 +34,10 @@ void activate_hardware() {
 
     Lights.reserve(8);
 
-    Lights.emplace_back(GP_CONTROL_1, "Luz 1", false);
-    Lights.emplace_back(GP_CONTROL_2, "Luz 2", false);
-    Lights.emplace_back(GP_CONTROL_3, "Luz 3", false);
-    Lights.emplace_back(GP_CONTROL_4, "Luz 4", false);
-    Lights.emplace_back(GP_CONTROL_5, "Luz 5", false);
-    Lights.emplace_back(GP_CONTROL_6, "Luz 6", false);
-    Lights.emplace_back(GP_CONTROL_7, "Luz 7", false);
-    Lights.emplace_back(GP_CONTROL_8, "Luz 8", false);
+    Lights.emplace_back(GP_CONTROL_1, GP_CONTROL_5, "Luz 1", false);
+    Lights.emplace_back(GP_CONTROL_2, GP_CONTROL_6, "Luz 2", false);
+    Lights.emplace_back(GP_CONTROL_3, GP_CONTROL_7, "Luz 3", false);
+    Lights.emplace_back(GP_CONTROL_4, GP_CONTROL_8, "Luz 4", false);
 
     for(auto& it:Lights){
         it.pulse(PULSE_MS);
@@ -49,58 +45,19 @@ void activate_hardware() {
     }
 }
 
-Light::Light(uint8_t GPIO, const char *name, bool is_dimmable) {
-    this->pin = GPIO;
+Light::Light(uint8_t GPIO_Light, uint8_t GPIO_Switch, const char *name, bool is_dimmable) {
+    this->pin = GPIO_Light;
+    this->switch_pin = GPIO_Switch;
     pinMode(this->pin, OUTPUT);
     this->dimmable = is_dimmable;
     digitalWrite(this->pin, DEACTIVATED);
     this->name = String(name);
     this->dimmer_value = 0x00;
     this->power_state = DEACTIVATED;
-    ESP_LOGD(TAG, "Light Object Created");
+    ESP_LOGD(TAG, "Light %s Activated", this->name.c_str());
 }
 
-uint8_t Light::getPin() const {
-    return pin;
-}
-
-void Light::setPin(uint8_t pin) {
-    Light::pin = pin;
-}
-
-bool Light::isPowerState() const {
-    return power_state;
-}
-
-void Light::setPowerState(bool powerState) {
-    power_state = powerState;
-}
-
-bool Light::isDimmable() const {
-    return dimmable;
-}
-
-void Light::setDimmable(bool dimmable) {
-    Light::dimmable = dimmable;
-}
-
-uint8_t Light::getDimmerValue() const {
-    return dimmer_value;
-}
-
-void Light::setDimmerValue(uint8_t dimmerValue) {
-    dimmer_value = dimmerValue;
-}
-
-const String &Light::getName() const {
-    return name;
-}
-
-void Light::setName(const String &name) {
-    Light::name = name;
-}
-
-void Light::on(){
+void Light::on() {
     if(this->dimmable){
 
     }else{
@@ -110,7 +67,7 @@ void Light::on(){
     ESP_LOGD(TAG, "%s is now On", this->name.c_str());
 }
 
-void Light::off(){
+void Light::off() {
     if(this->dimmable){
 
     }else{
@@ -120,11 +77,19 @@ void Light::off(){
     ESP_LOGD(TAG, "%s is now Off", this->name.c_str());
 }
 
-void Light::pulse(uint8_t ms){
-    digitalWrite(this->pin, (this->power_state == ACTIVATED ? DEACTIVATED : ACTIVATED));
-    this->power_state = !(this->power_state);
-    vTaskDelay(ms/portTICK_PERIOD_MS);
-    digitalWrite(this->pin, !this->power_state);
-    this->power_state = !(this->power_state);
+void Light::pulse(uint8_t ms) {
+    if(this->dimmable) {
+        //TODO
+    }else{
+        digitalWrite(this->pin, (this->power_state == ACTIVATED ? DEACTIVATED : ACTIVATED));
+        this->power_state = !(this->power_state);
+        vTaskDelay(ms/portTICK_PERIOD_MS);
+        digitalWrite(this->pin, !this->power_state);
+        this->power_state = !(this->power_state);
+    }
+}
+
+String Light::getName() {
+    return this->name;
 }
 

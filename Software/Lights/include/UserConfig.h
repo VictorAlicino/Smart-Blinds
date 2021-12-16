@@ -58,10 +58,10 @@
 #define GP_CONTROL_2            12  //Light 2
 #define GP_CONTROL_3            14  //Light 3
 #define GP_CONTROL_4            27  //light 4
-#define GP_CONTROL_5            26  //Light 5
-#define GP_CONTROL_6            25  //Light 6
-#define GP_CONTROL_7            33  //Light 7
-#define GP_CONTROL_8            32  //Light 8
+#define GP_CONTROL_5            26  //Switch Light 1
+#define GP_CONTROL_6            25  //Switch Light 2
+#define GP_CONTROL_7            33  //Switch Light 3
+#define GP_CONTROL_8            32  //Switch Light 4
 
 // --------- end General Purpose Input/Output   ---------- //
 
