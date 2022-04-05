@@ -1,3 +1,6 @@
 [submodule "SmartSpeaker"]
 	path = SmartSpeaker
 	url = https://github.com/VictorAlicino/SmartSpeaker
+[submodule "SmartLights"]
+	path = SmartLights
+	url = https://github.com/VictorAlicino/SmartLights
