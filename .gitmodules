@@ -4,3 +4,6 @@
 [submodule "SmartLights"]
 	path = SmartLights
 	url = https://github.com/VictorAlicino/SmartLights
+[submodule "SmartBlinds"]
+	path = SmartBlinds
+	url = https://github.com/VictorAlicino/SmartBlinds
