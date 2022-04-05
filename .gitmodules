@@ -1,0 +1,3 @@
+[submodule "SmartSpeaker"]
+	path = SmartSpeaker
+	url = https://github.com/VictorAlicino/SmartSpeaker
