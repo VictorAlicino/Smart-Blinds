@@ -7,3 +7,6 @@
 [submodule "SmartBlinds"]
 	path = SmartBlinds
 	url = https://github.com/VictorAlicino/SmartBlinds
+[submodule "WebRadio"]
+	path = WebRadio
+	url = https://www.github.com/VictorAlicino/WebRadio.git
